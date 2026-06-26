@@ -1,3 +1,3 @@
-# Escalas IBC 3.1
+# Escalas IBC 4.0
 
-Correção do travamento na seleção de participantes da escala.
+Versão reconstruída do zero, sem tabela editável, com seleção estável por cards de domingo/função.

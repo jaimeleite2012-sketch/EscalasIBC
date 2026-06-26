@@ -1,0 +1,219 @@
+{
+  "version": "4.0.0",
+  "church": "Igreja Batista do Cordeiro",
+  "roles": [
+    "Dirigente",
+    "Violão",
+    "Contra",
+    "Piano",
+    "Flauta",
+    "Back Vocal",
+    "Mesa de Som",
+    "Transmissão",
+    "Projeção",
+    "Multimídia"
+  ],
+  "people": [
+    {
+      "id": "jaime-leite",
+      "name": "Jaime Leite",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Dirigente"
+      ],
+      "mainRole": "Dirigente",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "joel-leite",
+      "name": "Joel Leite",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Violão"
+      ],
+      "mainRole": "Violão",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "ana-d-bora",
+      "name": "Ana Débora",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Piano",
+        "Back Vocal"
+      ],
+      "mainRole": "Piano",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "israel-ribeiro",
+      "name": "Israel Ribeiro",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Dirigente",
+        "Violão",
+        "Mesa de Som"
+      ],
+      "mainRole": "Dirigente",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "paulo-de-tarso",
+      "name": "Paulo de Tarso",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Violão",
+        "Contra",
+        "Mesa de Som"
+      ],
+      "mainRole": "Violão",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "naassom",
+      "name": "Naassom",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Flauta"
+      ],
+      "mainRole": "Flauta",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "f-bio-filemon",
+      "name": "Fábio Filemon",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Dirigente",
+        "Violão"
+      ],
+      "mainRole": "Dirigente",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "isabel-ribeiro",
+      "name": "Isabel Ribeiro",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Back Vocal"
+      ],
+      "mainRole": "Back Vocal",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "levi-ribeiro",
+      "name": "Levi Ribeiro",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Dirigente",
+        "Violão",
+        "Flauta"
+      ],
+      "mainRole": "Dirigente",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "levi-gama",
+      "name": "Levi Gama",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Violão",
+        "Flauta"
+      ],
+      "mainRole": "Violão",
+      "availability": "",
+      "notes": ""
+    },
+    {
+      "id": "fl-vio-anderson",
+      "name": "Flávio Anderson",
+      "phone": "",
+      "email": "",
+      "active": true,
+      "roles": [
+        "Dirigente"
+      ],
+      "mainRole": "Dirigente",
+      "availability": "",
+      "notes": ""
+    }
+  ],
+  "songs": [],
+  "months": {
+    "2026-06": {
+      "theme": "Fazendo Deus conhecido",
+      "verse": "Atos 17.15-31",
+      "dates": [
+        "07",
+        "14",
+        "21",
+        "28"
+      ],
+      "cells": {
+        "28|Dirigente": [
+          "Flávio Anderson"
+        ],
+        "28|Violão": [
+          "Israel Ribeiro"
+        ],
+        "28|Contra": [
+          "Paulo de Tarso"
+        ],
+        "28|Flauta": [
+          "Naassom"
+        ],
+        "28|Back Vocal": [
+          "Ana Débora"
+        ]
+      },
+      "songs": {}
+    },
+    "2026-01": {
+      "theme": "",
+      "verse": "",
+      "dates": [
+        "04",
+        "11",
+        "18",
+        "25"
+      ],
+      "cells": {},
+      "songs": {
+        "28": []
+      }
+    }
+  },
+  "current": {
+    "m": 5,
+    "y": 2026
+  }
+}
