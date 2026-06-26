@@ -1,11 +1,12 @@
-const CACHE_NAME = 'escalas-ibc-v5-0';
+const CACHE_NAME = 'escalas-ibc-v5-1-preview-fix';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.json',
+  './assets/icon-180.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  './assets/og-image.png'
+  './assets/og-image-v51.jpg'
 ];
 
 self.addEventListener('install', event => {
@@ -22,11 +23,9 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-      return response;
-    }).catch(() => caches.match('./index.html')))
-  );
+  if (event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).catch(() => caches.match('./index.html')));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
 });

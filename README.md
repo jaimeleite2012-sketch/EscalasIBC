@@ -1,25 +1,27 @@
-# Escalas IBC 5.0
+# Escalas IBC 5.1 - Correção da prévia do WhatsApp
 
-Versão consolidada para teste.
+## O que foi corrigido
+- Nova imagem Open Graph em JPG 1200x630.
+- Nome de arquivo novo: `og-image-v51.jpg` para forçar nova leitura.
+- Metatags Open Graph completas.
+- `og:image:secure_url`, largura, altura, tipo e alt.
+- Ícones PWA atualizados.
+- Manifest atualizado.
 
-## Inclui
-- Calendário mensal na tela inicial.
-- Mural limpo: ao clicar no domingo, mostra somente quem está escalado.
-- Estatísticas por participante e por função.
-- Compartilhamento da escala do dia no WhatsApp.
-- Identidade visual azul/lilás.
-- Logo oficial.
-- Open Graph para prévia bonita do link no WhatsApp.
-- Ícone PWA atualizado.
-
-## Como publicar
-Substitua estes arquivos na raiz do repositório GitHub Pages:
+## Arquivos que precisam ir para o GitHub
+Substitua tudo na raiz do repositório por estes arquivos:
 - index.html
 - manifest.json
 - service-worker.js
 - assets/
 
-Depois abra:
-https://jaimeleite2012-sketch.github.io/EscalasIBC/
+## Como testar corretamente
+1. Atualize todos os arquivos no GitHub.
+2. Aguarde o deploy finalizar.
+3. Abra no navegador:
+   https://jaimeleite2012-sketch.github.io/EscalasIBC/assets/og-image-v51.jpg
+   Se a imagem abrir, o arquivo está publicado.
+4. Envie no WhatsApp o link com cache buster:
+   https://jaimeleite2012-sketch.github.io/EscalasIBC/?v=51
 
-Observação: o WhatsApp pode levar alguns minutos ou horas para atualizar a prévia do link por cache.
+Observação: o WhatsApp pode manter cache da URL antiga. Por isso, teste com `?v=51`.
