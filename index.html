@@ -3,33 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050805">
-<link rel="manifest" href="manifest.json">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Escalas IBC">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="assets/icon-192.png">
-<link rel="stylesheet" href="styles.css">
-<title>Escalas IBC 4.0</title>
+<meta name="theme-color" content="#08042a">
+<title>Escalas IBC 4.1 Premium</title>
+<style>
+:root {
+  --bg:#050719; --navy:#070b2d; --blue:#0c2e73; --purple:#6b21a8; --violet:#a855f7;
+  --card:rgba(8,18,56,.82); --card2:rgba(19,13,70,.86); --line:rgba(161,142,255,.28);
+  --text:#f8fbff; --muted:#b8c3e6; --green:#42b72a; --yellow:#f9c80e; --red:#ef4444; --orange:#d97706;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif}
+body{min-height:100vh}
+.app{max-width:560px;margin:0 auto;min-height:100vh;padding:18px 14px 92px;background:
+ radial-gradient(circle at 20% 0%,rgba(37,99,235,.55),transparent 34%),
+ radial-gradient(circle at 90% 4%,rgba(168,85,247,.45),transparent 34%),
+ linear-gradient(180deg,#08042a 0%,#061238 52%,#050719 100%);}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{width:70px;height:70px;object-fit:contain;background:transparent}
+.brand h1{font-family:Georgia,serif;font-size:25px;line-height:.96;margin:0;letter-spacing:.5px}
+.brand p{margin:5px 0 0;font-size:12px;color:#fff;font-weight:700;letter-spacing:.7px}
+.iconBtn{width:46px;height:46px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;font-size:22px}
+.page{display:none} .page.active{display:block}
+.monthNav{display:flex;align-items:center;justify-content:space-between;margin:12px 0 16px}
+.monthNav button{border:0;background:transparent;color:#c084fc;font-weight:900;font-size:16px;padding:8px}
+.monthTitle{font-size:31px;font-weight:950;letter-spacing:1px;text-align:center}
+.card{background:linear-gradient(135deg,rgba(8,31,78,.88),rgba(40,13,86,.75));border:1px solid var(--line);border-radius:19px;padding:14px;margin-bottom:14px;box-shadow:0 20px 48px rgba(0,0,0,.36);backdrop-filter:blur(10px)}
+.calHead,.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.calHead div{text-align:center;font-weight:900;font-size:12px;color:#fff;margin-bottom:5px}
+.day{height:54px;border-radius:10px;border:1px solid rgba(134,158,255,.16);background:rgba(14,34,82,.62);color:#fff;font-size:19px;font-weight:900;display:flex;align-items:center;justify-content:center;position:relative}
+.day.dim{opacity:.25} .day.sunday{cursor:pointer}
+.day .bubble{width:41px;height:41px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.day.complete .bubble{background:linear-gradient(135deg,#65c83b,#248b19);box-shadow:0 0 0 2px rgba(116,255,101,.15)}
+.day.partial .bubble{background:linear-gradient(135deg,#facc15,#d97706)}
+.day.emptyScale .bubble{background:linear-gradient(135deg,#ef4444,#991b1b)}
+.day.selected{outline:2px solid #c084fc;box-shadow:0 0 22px rgba(168,85,247,.55)}
+.legend{display:flex;justify-content:center;gap:12px;margin:12px 0 2px;flex-wrap:wrap;font-size:12px;color:#fff}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px} .g{background:var(--green)}.y{background:var(--yellow)}.r{background:var(--red)}
+.detailHead{display:flex;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}
+.dateIcon{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#7e22ce);display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 12px 24px rgba(0,0,0,.32)}
+.dateText b{display:block;color:#c084fc;font-size:15px;text-transform:uppercase} .dateText strong{font-size:24px}
+.themeBox{font-size:14px;line-height:1.55} .themeBox span{color:#c084fc;font-weight:900}
+.rolesGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.roleCard{border:1px solid rgba(161,142,255,.28);background:rgba(7,18,52,.52);border-radius:16px;padding:11px;min-height:102px}
+.roleTop{display:flex;gap:9px;align-items:center;margin-bottom:7px}
+.roleIcon{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#c084fc,#6d28d9);display:flex;align-items:center;justify-content:center;font-size:20px}
+.roleName{font-weight:950;font-size:13px;text-transform:uppercase}
+.names{font-size:14px;line-height:1.5;color:#fff} .empty{color:#7f8aae;font-size:13px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
+.btn{border:0;border-radius:13px;padding:12px 10px;color:#fff;font-weight:950;font-size:13px;background:linear-gradient(135deg,#2563eb,#6d28d9)}
+.btn.whats{background:linear-gradient(135deg,#16a34a,#166534)} .btn.edit{background:linear-gradient(135deg,#f59e0b,#b45309)} .btn.ghost{background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(560px,100%);background:rgba(5,7,25,.96);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:10}
+.tab{background:transparent;border:0;color:#c9d2ee;font-size:10px;font-weight:900;display:flex;flex-direction:column;gap:3px;align-items:center}.tab b{font-size:20px}.tab.active{color:#c084fc}
+.listItem{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:15px;padding:12px;margin-bottom:8px}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#9333ea);display:flex;align-items:center;justify-content:center;font-weight:950}
+.small{color:var(--muted);font-size:12px;line-height:1.4}
+input,textarea,select{width:100%;background:rgba(7,14,40,.8);border:1px solid var(--line);border-radius:12px;color:#fff;padding:11px;font-size:15px}
+label{display:block;color:#c084fc;font-size:11px;font-weight:950;text-transform:uppercase;margin:8px 0 5px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;z-index:30}.modal.show{display:flex}
+.sheet{width:min(560px,100%);margin:0 auto;background:#080b2d;border:1px solid var(--line);border-radius:24px 24px 0 0;padding:16px;max-height:88vh;overflow:auto}
+.check{display:flex;gap:10px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:13px;padding:11px;margin:7px 0}.check input{width:auto;transform:scale(1.2)}
+@media(max-width:420px){.rolesGrid{grid-template-columns:1fr}.brand h1{font-size:21px}.monthTitle{font-size:26px}}
+</style>
 </head>
 <body>
-<div id="app" class="app">
-  <header class="topbar">
-    <img src="assets/logo.webp" class="logo" alt="Logo IBC">
-    <div><h1>Escalas IBC</h1><p>Igreja Batista do Cordeiro · V4.0</p></div>
-  </header>
-  <main id="view"></main>
-  <nav class="bottom-nav" id="nav">
-    <button data-route="home" class="active"><span>🏠</span>Início</button>
-    <button data-route="scale"><span>📅</span>Escala</button>
-    <button data-route="people"><span>👤</span>Pessoas</button>
-    <button data-route="songs"><span>🎵</span>Músicas</button>
-    <button data-route="settings"><span>⚙️</span>Config</button>
-  </nav>
+<div class="app">
+  <div class="top">
+    <div class="brand">
+      <img class="logo" src="data:image/webp;base64,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" alt="Logo">
+      <div><h1>IGREJA BATISTA<br>DO CORDEIRO</h1><p>IBCI · ESCALAS</p></div>
+    </div>
+    <div><button class="iconBtn" onclick="shareApp()">↗</button></div>
+  </div>
+
+  <section id="home" class="page active">
+    <div class="monthNav">
+      <button onclick="changeMonth(-1)">◀ <span id="prevLabel">Mês</span></button>
+      <div class="monthTitle" id="monthTitle">MÊS</div>
+      <button onclick="changeMonth(1)"><span id="nextLabel">Mês</span> ▶</button>
+    </div>
+    <div class="card">
+      <div class="calHead"><div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div></div>
+      <div class="calendar" id="calendar"></div>
+      <div class="legend"><span><i class="dot g"></i>Completa</span><span><i class="dot y"></i>Faltam pessoas</span><span><i class="dot r"></i>Sem escala</span></div>
+    </div>
+    <div id="selectedDetail"></div>
+  </section>
+
+  <section id="people" class="page">
+    <div class="card">
+      <h2 style="margin:0 0 8px">Participantes</h2>
+      <label>Nome</label><input id="pName">
+      <label>Funções separadas por vírgula</label><input id="pRoles" placeholder="Ex.: Dirigente, Violão, Back Vocal">
+      <button class="btn" style="width:100%;margin-top:10px" onclick="addPerson()">Adicionar</button>
+    </div>
+    <div id="peopleList"></div>
+  </section>
+
+  <section id="config" class="page">
+    <div class="card">
+      <h2 style="margin:0 0 8px">Configurações</h2>
+      <label>Funções da escala</label><textarea id="rolesTxt" rows="7"></textarea>
+      <button class="btn" style="width:100%;margin-top:10px" onclick="saveRoles()">Salvar funções</button>
+    </div>
+    <div class="card">
+      <button class="btn ghost" style="width:100%" onclick="exportBackup()">Exportar backup</button>
+      <label>Importar backup</label><input type="file" accept=".json" onchange="importBackup(event)">
+    </div>
+  </section>
+
+  <section id="about" class="page">
+    <div class="card">
+      <h2 style="margin-top:0">Escalas IBC 4.1</h2>
+      <p class="small">Tela inicial com calendário mensal interativo, mural do dia selecionado e identidade visual azul/lilás com o logo oficial.</p>
+    </div>
+  </section>
 </div>
-<div id="modal" class="modal" aria-hidden="true"><div class="sheet" id="sheet"></div></div>
-<div id="toast" class="toast"></div>
-<script src="app.js"></script>
+
+<nav class="bottom">
+  <button class="tab active" onclick="go('home')"><b>📅</b>Calendário</button>
+  <button class="tab" onclick="go('people')"><b>👥</b>Participantes</button>
+  <button class="tab" onclick="go('config')"><b>⚙️</b>Config</button>
+  <button class="tab" onclick="go('about')"><b>ℹ️</b>Sobre</button>
+</nav>
+
+<div id="modal" class="modal" onclick="if(event.target.id==='modal')closeModal()"><div id="sheet" class="sheet"></div></div>
+
+<script>
+const INITIAL = {"version": "4.1-premium", "church": "Igreja Batista do Cordeiro", "roles": ["Dirigente", "Violão", "Contra", "Piano", "Flauta", "Back Vocal", "Mesa de Som", "Transmissão", "Projeção", "Multimídia"], "people": [{"id": "jaime-leite", "name": "Jaime Leite", "roles": ["Dirigente"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "joel-leite", "name": "Joel Leite", "roles": ["Violão"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "ana-d-bora", "name": "Ana Débora", "roles": ["Piano", "Back Vocal"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "israel-ribeiro", "name": "Israel Ribeiro", "roles": ["Dirigente", "Violão", "Mesa de Som"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "paulo-de-tarso", "name": "Paulo de Tarso", "roles": ["Violão", "Contra", "Mesa de Som"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "naassom", "name": "Naassom", "roles": ["Flauta"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "f-bio-filemon", "name": "Fábio Filemon", "roles": ["Dirigente", "Violão"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "isabel-ribeiro", "name": "Isabel Ribeiro", "roles": ["Back Vocal"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "levi-ribeiro", "name": "Levi Ribeiro", "roles": ["Dirigente", "Violão", "Flauta"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "levi-gama", "name": "Levi Gama", "roles": ["Violão", "Flauta"], "phone": "", "email": "", "active": true, "notes": ""}, {"id": "fl-vio-anderson", "name": "Flávio Anderson", "roles": ["Dirigente"], "phone": "", "email": "", "active": true, "notes": ""}], "months": {"2026-06": {"theme": "Fazendo Deus conhecido", "verse": "Atos 17.15-31", "dates": ["07", "14", "21", "28"], "cells": {"28|Dirigente": ["Flávio Anderson"], "28|Violão": ["Israel Ribeiro"], "28|Contra": ["Paulo de Tarso"], "28|Flauta": ["Naassom"], "28|Back Vocal": ["Ana Débora"]}, "songs": {}}, "2026-01": {"theme": "", "verse": "", "dates": ["04", "11", "18", "25"], "cells": {}, "songs": {"28": []}}}, "current": {"m": 5, "y": 2026}, "songs": []};
+const KEY = "ESCALAS_IBC_4_1_PREMIUM";
+const MONTHS = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+const ICONS = {"Dirigente":"🎙️","Violão":"🎸","Contra":"🎸","Piano":"🎹","Flauta":"🎼","Back Vocal":"🎤","Mesa de Som":"🔊","Transmissão":"📹","Projeção":"🖥️","Multimídia":"💻"};
+let state = load();
+let current = currentId();
+let selectedDay = null;
+let editing = null;
+
+function clone(x){return JSON.parse(JSON.stringify(x));}
+function load(){try{const x=localStorage.getItem(KEY);if(x)return JSON.parse(x);}catch(e){}localStorage.setItem(KEY,JSON.stringify(INITIAL));return clone(INITIAL);}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+function split(v){if(Array.isArray(v))return v.filter(Boolean);return String(v||"").split(/[,;]/).map(x=>x.trim()).filter(Boolean);}
+function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();}
+function currentId(){const c=state.current||{m:new Date().getMonth(),y:new Date().getFullYear()};return c.y+"-"+String(c.m+1).padStart(2,"0");}
+function monthParts(id){const p=id.split("-").map(Number);return {y:p[0],m:p[1]};}
+function ensureMonth(id=current){if(!state.months[id]){const p=monthParts(id);state.months[id]={theme:"",verse:"",dates:sundays(p.y,p.m),cells:{},songs:{}};save();}return state.months[id];}
+function sundays(y,m){const a=[],d=new Date(y,m-1,1);while(d.getMonth()===m-1){if(d.getDay()===0)a.push(String(d.getDate()).padStart(2,"0"));d.setDate(d.getDate()+1);}return a;}
+function monthLabel(id){const p=monthParts(id);return MONTHS[p.m-1]+" "+p.y;}
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+
+function go(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));const idx={home:0,people:1,config:2,about:3}[page];document.querySelectorAll(".tab")[idx].classList.add("active");if(page==="home")renderHome();if(page==="people")renderPeople();if(page==="config")renderConfig();window.scrollTo(0,0);}
+function changeMonth(delta){let p=monthParts(current);p.m+=delta;if(p.m<1){p.m=12;p.y--;}if(p.m>12){p.m=1;p.y++;}current=p.y+"-"+String(p.m).padStart(2,"0");state.current={y:p.y,m:p.m-1};ensureMonth(current);selectedDay=null;save();renderHome();}
+function renderHome(){ensureMonth(current);const p=monthParts(current);document.getElementById("monthTitle").textContent=monthLabel(current).toUpperCase();document.getElementById("prevLabel").textContent=MONTHS[(p.m+10)%12];document.getElementById("nextLabel").textContent=MONTHS[p.m%12];renderCalendar();if(!selectedDay) selectedDay=nextSundayOrFirst();renderDetail();}
+function renderCalendar(){const box=document.getElementById("calendar");box.innerHTML="";const p=monthParts(current);const first=new Date(p.y,p.m-1,1).getDay();const days=new Date(p.y,p.m,0).getDate();for(let i=0;i<first;i++)box.appendChild(dayEl("", "dim"));for(let d=1;d<=days;d++){const dd=String(d).padStart(2,"0");const isSun=new Date(p.y,p.m-1,d).getDay()===0;let cls=isSun?statusClass(dd):"";const el=dayEl(d, isSun?("sunday "+cls):"");if(dd===selectedDay)el.classList.add("selected");if(isSun)el.onclick=()=>{selectedDay=dd;renderCalendar();renderDetail();};box.appendChild(el);}}
+function dayEl(n,cls){const div=document.createElement("div");div.className="day "+cls;div.innerHTML=n?`<span class="bubble">${n}</span>`:"";return div;}
+function statusClass(day){const m=ensureMonth(current);const filled=state.roles.filter(r=>(m.cells[day+"|"+r]||[]).length).length;if(filled===0)return"emptyScale";if(filled>=Math.max(1,Math.ceil(state.roles.length*.65)))return"complete";return"partial";}
+function nextSundayOrFirst(){const m=ensureMonth(current);const today=new Date();const p=monthParts(current);if(today.getFullYear()===p.y && today.getMonth()+1===p.m){const t=String(today.getDate()).padStart(2,"0");const future=m.dates.find(d=>Number(d)>=Number(t));if(future)return future;}return m.dates[0]||"01";}
+function renderDetail(){const m=ensureMonth(current);const day=selectedDay||nextSundayOrFirst();const date=`${day}/${String(monthParts(current).m).padStart(2,"0")}/${monthParts(current).y}`;let html=`<div class="card"><div class="detailHead"><div class="dateIcon">📅</div><div class="dateText"><b>Domingo</b><strong>${date}</strong></div></div><div class="themeBox"><div>TEMA: <span>${escapeHtml(m.theme||"Sem tema definido")}</span></div><div>TEXTO: <b>${escapeHtml(m.verse||"Sem texto base")}</b></div></div><div class="rolesGrid">`;state.roles.forEach(role=>{const names=m.cells[day+"|"+role]||[];html+=`<div class="roleCard"><div class="roleTop"><div class="roleIcon">${ICONS[role]||"👤"}</div><div class="roleName">${escapeHtml(role)}</div></div><div class="names">${names.length?names.map(n=>`<div>👤 ${escapeHtml(n)}</div>`).join(""):`<span class="empty">Não definido</span>`}</div></div>`;});html+=`</div><div class="actions"><button class="btn whats" onclick="shareDay()">🟢 Compartilhar</button><button class="btn ghost" onclick="copyDay()">📋 Copiar</button><button class="btn ghost" onclick="downloadImage()">🖼️ Imagem</button><button class="btn edit" onclick="openEditDay()">✏️ Editar escala</button></div></div>`;document.getElementById("selectedDetail").innerHTML=html;}
+function openEditDay(){const m=ensureMonth(current);let html=`<h2 style="margin-top:0">Editar Domingo ${selectedDay}</h2>`;state.roles.forEach(role=>{const names=m.cells[selectedDay+"|"+role]||[];html+=`<div class="roleCard" style="margin-bottom:8px"><div class="row"><div><div class="roleName">${escapeHtml(role)}</div><div class="small">${names.join(", ")||"Não definido"}</div></div><button class="btn" onclick="openSelector('${selectedDay}','${escapeHtml(role)}')">+</button></div></div>`;});document.getElementById("sheet").innerHTML=html;document.getElementById("modal").classList.add("show");}
+function rolePeople(role){const list=state.people.filter(p=>p.active!==false&&split(p.roles).some(r=>norm(r)===norm(role)));return list.length?list:state.people.filter(p=>p.active!==false);}
+function openSelector(day,role){editing={day,role};const m=ensureMonth(current);const selected=m.cells[day+"|"+role]||[];const people=rolePeople(role);let html=`<h2 style="margin-top:0">${escapeHtml(role)} · Dia ${day}</h2><input id="search" placeholder="Buscar..." oninput="filterPeople()"><div id="checks">`;people.forEach(p=>{html+=`<label class="check" data-person-line><input type="checkbox" value="${escapeHtml(p.name)}" ${selected.includes(p.name)?"checked":""}> <span><b>${escapeHtml(p.name)}</b><br><span class="small">${escapeHtml(split(p.roles).join(", "))}</span></span></label>`;});html+=`</div><button class="btn" style="width:100%;margin-top:10px" onclick="saveSelection()">Salvar</button><button class="btn ghost" style="width:100%;margin-top:8px" onclick="clearSelection()">Limpar</button>`;document.getElementById("sheet").innerHTML=html;}
+function filterPeople(){const q=norm(document.getElementById("search").value);document.querySelectorAll("[data-person-line]").forEach(l=>l.style.display=norm(l.textContent).includes(q)?"flex":"none");}
+function saveSelection(){const vals=Array.from(document.querySelectorAll("#checks input:checked")).map(x=>x.value);const m=ensureMonth(current);m.cells[editing.day+"|"+editing.role]=vals;save();closeModal();renderHome();}
+function clearSelection(){const m=ensureMonth(current);m.cells[editing.day+"|"+editing.role]=[];save();closeModal();renderHome();}
+function closeModal(){document.getElementById("modal").classList.remove("show");document.getElementById("sheet").innerHTML="";}
+function textDay(){const m=ensureMonth(current);let txt=`📅 *Escala IBC - Domingo ${selectedDay}/${String(monthParts(current).m).padStart(2,"0")}/${monthParts(current).y}*\n`;if(m.theme)txt+=`Tema: ${m.theme}\n`;if(m.verse)txt+=`Texto base: ${m.verse}\n`;txt+="\n";state.roles.forEach(role=>{const names=m.cells[selectedDay+"|"+role]||[];txt+=`${role}: ${names.join(", ")||"-"}\n`;});return txt;}
+function shareDay(){const txt=textDay();if(navigator.share)navigator.share({title:"Escala IBC",text:txt}).catch(()=>{});else location.href="https://wa.me/?text="+encodeURIComponent(txt);}
+async function copyDay(){try{await navigator.clipboard.writeText(textDay());alert("Escala copiada.")}catch(e){alert(textDay())}}
+function shareApp(){if(navigator.share)navigator.share({title:"Escalas IBC",text:"App Escalas IBC",url:location.href}).catch(()=>{});}
+function downloadImage(){alert("Nesta versão, use Compartilhar ou Copiar. A imagem premium entra na próxima etapa.")}
+function renderPeople(){const box=document.getElementById("peopleList");box.innerHTML="";state.people.forEach((p,i)=>{const div=document.createElement("div");div.className="listItem";div.innerHTML=`<div style="display:flex;gap:10px;align-items:center"><div class="avatar">${escapeHtml(p.name[0])}</div><div><b>${escapeHtml(p.name)}</b><div class="small">${escapeHtml(split(p.roles).join(", "))}</div></div></div><button class="btn ghost" onclick="removePerson(${i})">Excluir</button>`;box.appendChild(div);})}
+function addPerson(){const n=document.getElementById("pName").value.trim();if(!n)return alert("Informe o nome.");state.people.push({name:n,roles:split(document.getElementById("pRoles").value),active:true});document.getElementById("pName").value="";document.getElementById("pRoles").value="";save();renderPeople();}
+function removePerson(i){if(confirm("Excluir participante?")){state.people.splice(i,1);save();renderPeople();}}
+function renderConfig(){document.getElementById("rolesTxt").value=state.roles.join("\n");}
+function saveRoles(){state.roles=document.getElementById("rolesTxt").value.split("\n").map(x=>x.trim()).filter(Boolean);save();alert("Funções salvas.");}
+function exportBackup(){const b=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="backup_escalas_ibc_4_1.json";a.click();}
+function importBackup(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();location.reload();}catch(err){alert("Backup inválido.")}};r.readAsText(f);}
+ensureMonth(current);renderHome();
+</script>
 </body>
 </html>
