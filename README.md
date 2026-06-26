@@ -1,18 +1,21 @@
-# Escalas IBC PWA
+# Escalas IBC 3.0 PWA
 
-Aplicativo PWA da Igreja Batista do Cordeiro.
+App PWA da Igreja Batista do Cordeiro com dados iniciais migrados do backup.
 
-## Como publicar no GitHub Pages
-1. Crie um repositório chamado `escalas-ibc`.
-2. Envie todos os arquivos desta pasta para o repositório.
-3. Vá em Settings > Pages.
-4. Em Source, escolha `Deploy from a branch`.
-5. Branch: `main`, pasta: `/root`.
-6. O app ficará disponível em:
-   `https://SEU_USUARIO.github.io/escalas-ibc/`
+## Publicação no GitHub Pages
 
-## Como instalar no iPhone
-Abra o link no Safari > Compartilhar > Adicionar à Tela de Início.
+1. Envie estes arquivos para o repositório.
+2. Settings > Pages.
+3. Source: Deploy from a branch.
+4. Branch: main / root.
+5. Acesse: https://jaimeleite2012-sketch.github.io/EscalasIBC/
 
-## Como instalar no Android
-Abra o link no Chrome > menu ⋮ > Adicionar à tela inicial.
+## Instalar no iPhone
+
+Safari > Compartilhar > Adicionar à Tela de Início.
+
+## Dados migrados
+
+- 11 participantes
+- Funções do ministério
+- Escalas de 2026-06 e 2026-01
