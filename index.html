@@ -4,7 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08042a">
-<title>Escalas IBC 4.2</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Escalas IBC">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="description" content="Escalas IBC — organize escalas, acompanhe o ministério de louvor e compartilhe com a Igreja Batista do Cordeiro.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Escalas IBC">
+<meta property="og:description" content="Igreja Batista do Cordeiro · escalas, calendário, participantes e estatísticas do ministério.">
+<meta property="og:image" content="https://jaimeleite2012-sketch.github.io/EscalasIBC/assets/og-image.png">
+<meta property="og:url" content="https://jaimeleite2012-sketch.github.io/EscalasIBC/">
+<meta property="og:site_name" content="Escalas IBC">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Escalas IBC">
+<meta name="twitter:description" content="App de escalas da Igreja Batista do Cordeiro.">
+<meta name="twitter:image" content="https://jaimeleite2012-sketch.github.io/EscalasIBC/assets/og-image.png">
+<title>Escalas IBC 5.0</title>
 <style>
 :root {
   --bg:#050719; --navy:#070b2d; --blue:#0c2e73; --purple:#6b21a8; --violet:#a855f7;
@@ -73,7 +92,7 @@ label{display:block;color:#c084fc;font-size:11px;font-weight:950;text-transform:
   <div class="top">
     <div class="brand">
       <img class="logo" src="data:image/webp;base64,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" alt="Logo">
-      <div><h1>IGREJA BATISTA<br>DO CORDEIRO</h1><p>IBCI · ESCALAS 4.2</p></div>
+      <div><h1>IGREJA BATISTA<br>DO CORDEIRO</h1><p>IBCI · ESCALAS 5.0</p></div>
     </div>
     <div><button class="iconBtn" onclick="shareApp()">↗</button></div>
   </div>
@@ -143,7 +162,7 @@ label{display:block;color:#c084fc;font-size:11px;font-weight:950;text-transform:
 
   <section id="about" class="page">
     <div class="card">
-      <h2 style="margin-top:0">Escalas IBC 4.2</h2>
+      <h2 style="margin-top:0">Escalas IBC 5.0</h2>
       <p class="small">Usabilidade: calendário inicial, mural limpo somente com escalados, estatísticas e estrutura preparada para sincronização futura.</p>
     </div>
   </section>
@@ -215,6 +234,13 @@ function renderBars(entries){const max=Math.max(1,...entries.map(e=>e[1]));docum
 function renderPie(entries){const total=entries.reduce((a,b)=>a+b[1],0);if(!total){document.getElementById("pie").style.background="rgba(255,255,255,.08)";document.getElementById("pieLegend").innerHTML="<div class='empty'>Sem dados</div>";return;}let acc=0;const slices=[];entries.forEach(([name,val],i)=>{const start=(acc/total)*100;acc+=val;const end=(acc/total)*100;slices.push(`${PALETTE[i%PALETTE.length]} ${start}% ${end}%`);});document.getElementById("pie").style.background=`conic-gradient(${slices.join(",")})`;document.getElementById("pieLegend").innerHTML=entries.map(([name,val],i)=>`<div><span class="dot" style="background:${PALETTE[i%PALETTE.length]}"></span>${escapeHtml(name)}: <b>${val}</b></div>`).join("");}
 function renderDetailStats(rows){document.getElementById("detailStats").innerHTML=rows.length?rows.map(r=>`<div class="listItem"><div><b>${escapeHtml(r.name)}</b><div class="small">Dia ${r.day} · ${escapeHtml(r.role)}</div></div></div>`).join(""):`<div class="empty">Sem registros.</div>`;}
 ensureMonth(current);renderHome();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
