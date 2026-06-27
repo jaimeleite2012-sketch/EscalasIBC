@@ -1,12 +1,13 @@
-const CACHE_NAME = 'escalas-ibc-v5-1-preview-fix';
+const CACHE_NAME = 'escalas-ibc-v5-2-root-preview';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.json',
+  './og-image-v52.jpg',
   './assets/icon-180.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  './assets/og-image-v51.jpg'
+  './assets/og-image-v52.jpg'
 ];
 
 self.addEventListener('install', event => {

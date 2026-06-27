@@ -1,27 +1,27 @@
-# Escalas IBC 5.1 - Correção da prévia do WhatsApp
+# Escalas IBC 5.2 - Preview WhatsApp corrigido
 
-## O que foi corrigido
-- Nova imagem Open Graph em JPG 1200x630.
-- Nome de arquivo novo: `og-image-v51.jpg` para forçar nova leitura.
-- Metatags Open Graph completas.
-- `og:image:secure_url`, largura, altura, tipo e alt.
-- Ícones PWA atualizados.
-- Manifest atualizado.
+Correção específica: a imagem de capa agora fica também na raiz do site:
 
-## Arquivos que precisam ir para o GitHub
-Substitua tudo na raiz do repositório por estes arquivos:
-- index.html
-- manifest.json
-- service-worker.js
-- assets/
+- `og-image-v52.jpg`
 
-## Como testar corretamente
-1. Atualize todos os arquivos no GitHub.
-2. Aguarde o deploy finalizar.
-3. Abra no navegador:
-   https://jaimeleite2012-sketch.github.io/EscalasIBC/assets/og-image-v51.jpg
-   Se a imagem abrir, o arquivo está publicado.
-4. Envie no WhatsApp o link com cache buster:
-   https://jaimeleite2012-sketch.github.io/EscalasIBC/?v=51
+Isso evita o erro 404 causado pela pasta `assets` não publicada.
 
-Observação: o WhatsApp pode manter cache da URL antiga. Por isso, teste com `?v=51`.
+## Publicar no GitHub
+
+Suba TODOS estes itens para a raiz do repositório:
+
+- `index.html`
+- `manifest.json`
+- `service-worker.js`
+- `og-image-v52.jpg`
+- pasta `assets`
+
+## Teste obrigatório
+
+Depois do deploy, abra no navegador:
+
+https://jaimeleite2012-sketch.github.io/EscalasIBC/og-image-v52.jpg
+
+Se a imagem abrir, envie no WhatsApp este link:
+
+https://jaimeleite2012-sketch.github.io/EscalasIBC/?v=52
