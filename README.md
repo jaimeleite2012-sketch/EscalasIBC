@@ -1,27 +1,19 @@
-# Escalas IBC 5.2 - Preview WhatsApp corrigido
+# Escalas IBC PRO 6.0 — Sprint 1
 
-Correção específica: a imagem de capa agora fica também na raiz do site:
+## Inclui
+- Nova Home executiva
+- Agenda premium
+- Mural limpo
+- Dashboard executivo
+- Participantes
+- Configurações
+- Open Graph na raiz: `og-image-v60.jpg`
 
-- `og-image-v52.jpg`
+## Teste
+Depois de subir no GitHub, use:
 
-Isso evita o erro 404 causado pela pasta `assets` não publicada.
+https://jaimeleite2012-sketch.github.io/EscalasIBC/?v=60
 
-## Publicar no GitHub
+Imagem de preview:
 
-Suba TODOS estes itens para a raiz do repositório:
-
-- `index.html`
-- `manifest.json`
-- `service-worker.js`
-- `og-image-v52.jpg`
-- pasta `assets`
-
-## Teste obrigatório
-
-Depois do deploy, abra no navegador:
-
-https://jaimeleite2012-sketch.github.io/EscalasIBC/og-image-v52.jpg
-
-Se a imagem abrir, envie no WhatsApp este link:
-
-https://jaimeleite2012-sketch.github.io/EscalasIBC/?v=52
+https://jaimeleite2012-sketch.github.io/EscalasIBC/og-image-v60.jpg
